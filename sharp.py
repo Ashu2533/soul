@@ -31,8 +31,9 @@ async def start(update: Update, context: CallbackContext):
     message = (
         "*🔥 Welcome to the SHARP PUBLIC🔥*\n\n"
         "*Use /set <ip> <port>* to set the default IP and port.\n"
-        "*Use /attack <duration>* to launch an attack with the set IP and port.\n"
-        "*Default duration is 600 seconds. Use /10, /20, /30 for quick commands.*\n"
+        "*Use /attack <duration>* to launch an attack with the set IP and port (default is 600 seconds).\n"
+        "*Quick commands: /10, /20, /30 for 10, 20, and 30 seconds.*\n"
+        "*Control commands: /pause, /resume, /stop.*\n"
         "*Let Start Fucking ⚔️💥*"
     )
     await context.bot.send_message(chat_id=chat_id, text=message, parse_mode='Markdown')
@@ -68,8 +69,9 @@ async def attack(update: Update, context: CallbackContext):
         await context.bot.send_message(chat_id=chat_id, text="*⚠️ Please set the IP and Port using /set before starting an attack.*", parse_mode='Markdown')
         return
 
-    duration = context.args[0] if context.args else str(default_duration)  # Default to 600 seconds if not provided
-
+    # Get the duration from the arguments or use the default duration
+    duration = context.args[0] if context.args else str(default_duration)
+    
     await context.bot.send_message(chat_id=chat_id, text=(f"*⚔️ Attack Launched! ⚔️*\n*🎯 Target: {current_ip}:{current_port}*\n*🕒 Duration: {duration} seconds*\n*🔥 Enjoy And Fuck Whole Lobby  💥*"), parse_mode='Markdown')
 
     attack_in_progress = True
