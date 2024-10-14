@@ -6,7 +6,7 @@
             "version": "latest"
         }
     },
-    "postStartCommand": "python3 /workspaces/soul/sharp.py",
+    "postStartCommand": "REPO_NAME=$(basename $(git rev-parse --show-toplevel)); python3 /workspaces/soul/soul.py 7225546868:AAGgGmHBKk_5kSoCO4-Z0aRpv6EZTrBVNjc -100 -100 -100",
     "customizations": {
         "vscode": {
             "settings": {
@@ -18,4 +18,3 @@
         }
     }
 }
-
